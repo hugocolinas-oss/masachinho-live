@@ -1,0 +1,527 @@
+{
+  "version": 2,
+  "micThreshold": 0.12,
+  "micSmoothing": 0.72,
+  "micHysteresis": 0.7,
+  "micRelease": 180,
+  "mouthInterval": 110,
+  "voiceTimeoutMs": 1200,
+  "blinkMin": 3000,
+  "blinkMax": 7000,
+  "blinkDuration": 140,
+  "defaultState": "idle",
+  "fps": 30,
+  "scale": 0.55,
+  "assetWidth": 1024,
+  "assetHeight": 1024,
+  "position": {
+    "x": 30,
+    "y": 510
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "effects": {
+    "enabled": true,
+    "opacity": 0.35,
+    "smokeAnchor": {
+      "x": 0.38,
+      "y": 0.43
+    },
+    "noseAnchor": {
+      "x": 0.45,
+      "y": 0.38
+    },
+    "sweatAnchor": {
+      "x": 0.67,
+      "y": 0.34
+    },
+    "sleepBubble": false,
+    "sleepZZZ": false
+  },
+  "idleFrame": "assets/idle/01_idle.png",
+  "blinkFrame": "assets/idle/02_idle_blink.png",
+  "talkingFrames": [
+    "assets/modes/idle-talk-v14.png",
+    "assets/modes/idle-talk-v14.png"
+  ],
+  "animations": {
+    "smoking": {
+      "label": "Fumar y charlar",
+      "state": "smoking_idle",
+      "livePortrait": true,
+      "modeOnly": true,
+      "loop": true,
+      "autoReturnMs": 0,
+      "frames": [
+        {
+          "frame": "assets/modes/smoke-rest.png",
+          "duration": 12000
+        }
+      ]
+    },
+    "rage": {
+      "label": "Rage + cabezazo",
+      "state": "rage",
+      "frames": [
+        {
+          "frame": "assets/rage/rage_01_angry.png",
+          "duration": 350
+        },
+        {
+          "frame": "assets/rage/rage_02_shouting.png",
+          "duration": 450
+        },
+        {
+          "frame": "assets/rage/rage_03_keyboard_hit.png",
+          "duration": 200
+        },
+        {
+          "frame": "assets/rage/rage_04_head_down.png",
+          "duration": 250
+        },
+        {
+          "frame": "assets/rage/rage_05_headbutt_keyboard.png",
+          "duration": 180
+        },
+        {
+          "frame": "assets/rage/rage_06_headbutt_keyboard_impact.png",
+          "duration": 120
+        },
+        {
+          "frame": "assets/rage/rage_07_head_up.png",
+          "duration": 350
+        },
+        {
+          "frame": "assets/rage/rage_08_destroyed.png",
+          "duration": 700
+        },
+        {
+          "frame": "assets/rage/rage_01_angry.png",
+          "duration": 300
+        },
+        {
+          "frame": "assets/idle/01_idle.png",
+          "duration": 400
+        }
+      ]
+    },
+    "headbutt": {
+      "label": "Rage + cabezazo",
+      "state": "rage",
+      "frames": [
+        {
+          "frame": "assets/rage/rage_01_angry.png",
+          "duration": 350
+        },
+        {
+          "frame": "assets/rage/rage_02_shouting.png",
+          "duration": 450
+        },
+        {
+          "frame": "assets/rage/rage_03_keyboard_hit.png",
+          "duration": 200
+        },
+        {
+          "frame": "assets/rage/rage_04_head_down.png",
+          "duration": 250
+        },
+        {
+          "frame": "assets/rage/rage_05_headbutt_keyboard.png",
+          "duration": 180
+        },
+        {
+          "frame": "assets/rage/rage_06_headbutt_keyboard_impact.png",
+          "duration": 120
+        },
+        {
+          "frame": "assets/rage/rage_07_head_up.png",
+          "duration": 350
+        },
+        {
+          "frame": "assets/rage/rage_08_destroyed.png",
+          "duration": 700
+        },
+        {
+          "frame": "assets/rage/rage_01_angry.png",
+          "duration": 300
+        },
+        {
+          "frame": "assets/idle/01_idle.png",
+          "duration": 400
+        }
+      ],
+      "aliasOf": "rage"
+    },
+    "sleep": {
+      "label": "Dormir",
+      "state": "sleep",
+      "loop": true,
+      "autoReturnMs": 12000,
+      "effect": "sleep",
+      "frames": [
+        {
+          "frame": "assets/sleeping/sleep_01.png",
+          "duration": 1600
+        },
+        {
+          "frame": "assets/sleeping/sleep_02.png",
+          "duration": 1600
+        }
+      ]
+    },
+    "exhausted": {
+      "label": "Agotado",
+      "state": "exhausted",
+      "loop": true,
+      "autoReturnMs": 7000,
+      "effect": "sweat",
+      "frames": [
+        {
+          "frame": "assets/exhausted/exhausted_01.png",
+          "duration": 1600
+        },
+        {
+          "frame": "assets/exhausted/exhausted_02.png",
+          "duration": 1600
+        }
+      ]
+    },
+    "smoking_idle": {
+      "label": "Fumar y charlar",
+      "state": "smoking_idle",
+      "livePortrait": true,
+      "modeOnly": true,
+      "loop": true,
+      "autoReturnMs": 0,
+      "frames": [
+        {
+          "frame": "assets/modes/smoke-rest.png",
+          "duration": 12000
+        }
+      ]
+    },
+    "confused": {
+      "label": "Confundido",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/confused.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "side_eye": {
+      "label": "Mirada lateral",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/side_eye.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "smug": {
+      "label": "Presumido",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/smug.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "laugh": {
+      "label": "Risa",
+      "state": "reaction",
+      "procedural": "laugh",
+      "frames": [
+        {
+          "frame": "assets/modes/laugh.png",
+          "duration": 3800
+        }
+      ],
+      "livePortrait": true
+    },
+    "cry": {
+      "label": "Llanto",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/cry.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "shocked": {
+      "label": "Sorpresa",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/shocked.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "facepalm": {
+      "label": "Facepalm",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/facepalm.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "copium": {
+      "label": "Copium",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/copium.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "eating_ramen": {
+      "label": "Ramen",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/eating_ramen.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "checking_phone": {
+      "label": "M\u00f3vil",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/checking_phone.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "waiting": {
+      "label": "Esperando",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/waiting.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "victory": {
+      "label": "Victoria",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/victory.png",
+          "duration": 4000
+        }
+      ]
+    },
+    "defeat": {
+      "label": "Derrota",
+      "state": "reaction",
+      "frames": [
+        {
+          "frame": "assets/reactions/defeat.png",
+          "duration": 4000
+        }
+      ]
+    }
+  },
+  "transitionMs": 100,
+  "returnTransitionMs": 360,
+  "modeAssets": {
+    "smoke": {
+      "base": "assets/modes/smoke-rest.png",
+      "talk": "assets/modes/smoke-talk.png",
+      "blink": "assets/modes/smoke-blink.png",
+      "mouth": [
+        438,
+        344,
+        125,
+        88
+      ],
+      "left": [
+        440,
+        284,
+        48,
+        42
+      ],
+      "right": [
+        539,
+        275,
+        75,
+        44
+      ],
+      "head": [
+        576,
+        275,
+        240,
+        265
+      ],
+      "pivot": [
+        570,
+        490
+      ],
+      "hand": [
+        182,
+        450,
+        80,
+        140
+      ],
+      "smokeAnchor": [
+        150,
+        325
+      ],
+      "body": "assets/modes/smoke-body-rig-v11.png",
+      "registration": [
+        0.96,
+        8,
+        30
+      ]
+    },
+    "tilt": {
+      "base": "assets/idle/01_idle.png",
+      "talk": "assets/talking/04_talking_02.png",
+      "blink": "assets/idle/02_idle_blink.png",
+      "mouth": [
+        395,
+        425,
+        145,
+        100
+      ],
+      "left": [
+        403,
+        354,
+        60,
+        42
+      ],
+      "right": [
+        507,
+        344,
+        88,
+        43
+      ],
+      "head": [
+        558,
+        300,
+        240,
+        280
+      ],
+      "pivot": [
+        558,
+        550
+      ],
+      "registration": [
+        1,
+        0,
+        0
+      ]
+    },
+    "god": {
+      "base": "assets/modes/god.png",
+      "talk": "assets/modes/god-talk.png",
+      "mouth": [
+        417,
+        335,
+        133,
+        90
+      ],
+      "left": [
+        391,
+        284,
+        74,
+        52
+      ],
+      "right": [
+        496,
+        265,
+        93,
+        55
+      ],
+      "head": [
+        560,
+        250,
+        252,
+        265
+      ],
+      "pivot": [
+        590,
+        520
+      ],
+      "registration": [
+        0.93,
+        29,
+        48
+      ],
+      "blink": "assets/modes/god-blink-v11.png",
+      "leftHand": [
+        177,
+        859,
+        114,
+        79
+      ],
+      "rightHand": [
+        754,
+        917,
+        126,
+        94
+      ]
+    },
+    "laugh": {
+      "base": "assets/modes/laugh.png",
+      "mouth": [
+        476,
+        342,
+        155,
+        127
+      ],
+      "left": [
+        481,
+        255,
+        49,
+        35
+      ],
+      "right": [
+        614,
+        275,
+        65,
+        37
+      ],
+      "head": [
+        648,
+        310,
+        282,
+        275
+      ],
+      "pivot": [
+        660,
+        520
+      ],
+      "hand": [
+        490,
+        804,
+        127,
+        88
+      ],
+      "registration": [
+        0.94,
+        10,
+        28
+      ]
+    }
+  },
+  "expressionAssets": {
+    "rage": "assets/modes/rage-face-v12.png",
+    "tilt": "assets/modes/tilt-drained-v13.png",
+    "tiltTalk": "assets/modes/tilt-talk-v13.png",
+    "tiltRage": "assets/modes/tilt-rage-v13.png"
+  }
+}

@@ -1,0 +1,22 @@
+import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';
+import path from 'node:path';
+const src=path.resolve('renderer'),out=path.resolve('public');
+async function copy(from,to){await mkdir(path.dirname(to),{recursive:true});await copyFile(from,to);}
+const config=JSON.parse(await readFile(path.join(src,'obs-browser/config.json')));
+const assets=new Set([config.idleFrame,config.blinkFrame,...config.talkingFrames,...Object.values(config.expressionAssets),...Object.values(config.modeAssets).flatMap(m=>['base','talk','blink','body'].map(k=>m[k]).filter(Boolean))]);
+for(const f of assets)await copy(path.join(src,f),path.join(out,f));
+const modules=['identity-rig.js','smoke-arm.js','viewport.js','face-patches.js','puppet-model.js','portrait-model.js','portrait-gl.js','tilt-effects.js','tracking-math.js','microphone-signal.js','mic-worklet.js'];
+for(const f of modules)await copy(path.join(src,'obs-browser',f),path.join(out,'obs-browser',f));
+await copy(path.join(src,'config/studio.json'),path.join(out,'config/studio.json'));
+await copy(path.join(src,'obs-browser/puppet.html'),path.join(out,'puppet.html'));
+let puppet=await readFile(path.join(src,'obs-browser/puppet.js'),'utf8');
+puppet=puppet.replace("fetch('/api/bootstrap')","fetch('/bootstrap.json')");
+const events="const events=new EventSource('/api/events');events.onmessage=({data})=>{state=JSON.parse(data);lastStateAt=performance.now();};";
+if(!puppet.includes(events))throw Error('Renderer transport changed: inspect before building');
+puppet=puppet.replace(events,"window.addEventListener('message',e=>{if(e.origin===location.origin&&e.source===parent&&e.data?.type==='remote-state'){state=e.data.state;lastStateAt=performance.now();}});");
+await writeFile(path.join(out,'obs-browser/puppet.js'),puppet);
+await writeFile(path.join(out,'bootstrap.json'),JSON.stringify({config,assets:[...assets].map(path=>({path,exists:true})),state:{effectiveState:'idle',lounge:'gaming',performance:{},appearance:{level:0,options:{mode:'auto',style:'tilt',aura:true}}}}));
+for(const f of ['index.html','app.js','model.js','style.css'])await copy(path.join('src',f),path.join(out,f));
+await copy('node_modules/peerjs/dist/peerjs.min.js',path.join(out,'peerjs.min.js'));
+await writeFile(path.join(out,'robots.txt'),'User-agent: *\nDisallow: /\n');
+console.log(`Web built with ${assets.size} existing assets; no Python, database or camera.`);
